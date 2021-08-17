@@ -1,0 +1,28 @@
+{
+  "name": "the-real-team-green",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "concurrently": "^6.2.1",
+    "dotenv": "^10.0.0",
+    "nodemon": "^2.0.12"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node backend/server",
+    "server": "nodemon backend/server",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Woz-U-Group-Projects/the-real-team-green.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Woz-U-Group-Projects/the-real-team-green/issues"
+  },
+  "homepage": "https://github.com/Woz-U-Group-Projects/the-real-team-green#readme"
+}
