@@ -2,6 +2,8 @@ import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import { Row, Col } from 'react-bootstrap'
 import Product from '../components/Product'
+import DarkMode from '../components/DarkMode'
+import styled from 'styled-components'
 
 const HomeScreen = () => {
     const [products, setProducts] = useState([])
@@ -18,7 +20,8 @@ const HomeScreen = () => {
 
     return (
         <>
-            <h1>Latest Products</h1>
+            <Title>Latest Products</Title>
+            
             <Row>
                 {products.map(product =>
                 <Col key={product._id}sm={12} md={6} lg={4} xl={3}>
@@ -29,5 +32,8 @@ const HomeScreen = () => {
         </>
     )
 }
-
+const Title = styled.div`
+   color: ${props => !props.light ? "#333" : "#eee"};
+   font-size: 40px;
+ `;
 export default HomeScreen
