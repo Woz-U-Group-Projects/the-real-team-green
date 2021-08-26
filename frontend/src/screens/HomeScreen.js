@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import { Row, Col } from 'react-bootstrap'
 import Product from '../components/Product'
-import DarkMode from '../components/DarkMode'
+
 import styled from 'styled-components'
 
 const HomeScreen = () => {

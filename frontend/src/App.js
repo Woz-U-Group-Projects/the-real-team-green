@@ -52,9 +52,10 @@ const Button = styled.button`
   transition: .2s all ease-in-out;
   background: none;
   color: ${props => !props.light ? "#333" : "#eee"};
-  float: right;
+  
   &:hover {
     transition: .2s all ease-in-out;
+  
   }
 `;
 
