@@ -6,6 +6,8 @@ import Message from '../components/Message'
 import FormWrap from '../components/FormWrap'
 import { login } from '../actions/userActions'
 
+
+
 const LoginScreen = ({ location, history }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -60,6 +62,14 @@ const LoginScreen = ({ location, history }) => {
 
       <Row className='py-3'>
         <Col>
+          <Link to='/loginwithemail'>
+            Email Login
+          </Link>
+        </Col>
+      </Row>
+
+      <Row className='py-3'>
+        <Col>
           New Customer?{' '}
           <Link to={redirect ? `/register?redirect=${redirect}` : '/register'}>
             Register
@@ -67,6 +77,7 @@ const LoginScreen = ({ location, history }) => {
         </Col>
       </Row>
     </FormWrap>
+    
   )
 }
 

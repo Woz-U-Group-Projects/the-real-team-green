@@ -1,8 +1,10 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { LinkContainer } from 'react-router-bootstrap'
-import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap'
+import { Navbar, Nav, Container, NavDropdown, Image } from 'react-bootstrap'
 import { logout } from '../actions/userActions'
+import { Link } from 'react-router-dom'
+
 
 const Header = () => {
     const dispatch = useDispatch()
@@ -14,9 +16,13 @@ const Header = () => {
     return (
         <header>
             <Navbar bg="dark" variant="dark">
-                <Container>
+                <Container fluid>
                     <LinkContainer to='/'>
-                        <Navbar.Brand>EZShop</Navbar.Brand>
+                        <Navbar.Brand>
+                            <Link to='/'>
+                                <img src='./images/logo.png' alt='EZShop' width="auto" height='auto' className='d-inline-block align-top mr-auto'></img>
+                            </Link>
+                            </Navbar.Brand>
                     </LinkContainer>
                     <Nav className="ml-auto">
                         <LinkContainer to='/cart'>
