@@ -5,6 +5,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import HomeScreen from './screens/HomeScreen';
 import ProductScreen from './screens/ProductScreen';
+<<<<<<< HEAD
 //import DarkMode from './components/DarkMode';
 import styled from 'styled-components';
 import { useState } from 'react';
@@ -19,10 +20,24 @@ function App() {
         console.log(isDarkMode)
   }   
 
+=======
+import CartScreen from './screens/CartScreen';
+import LoginScreen from './screens/LoginScreen';
+import RegisterScreen from './screens/RegisterScreen';
+import ProfileScreen from './screens/ProfileScreen';
+import ShippingScreen from './screens/ShippingScreen';
+import PaymentScreen from './screens/PaymentScreen';
+import OrderScreen from "./screens/OrderScreen";
+import PlaceOrderScreen from './screens/PlaceOrderScreen';
+import Auth from './components/Auth'
+
+function App() {
+>>>>>>> main
   return (
     <Router>
     <>
     <Header />
+<<<<<<< HEAD
     <Page light={isDarkMode ? true : false}>
     <Button light={isDarkMode ? true : false}  onClick={handleToggle}>Dark Mode</Button>
             {/* <ThemeImage src={ isDarkMode ? `${Moon}` : `${Sun}` }/> */}
@@ -35,12 +50,30 @@ function App() {
     </Container>
     </main>
     </Page>
+=======
+    <main className='py-3'>
+      <Container>
+    <Route path='/login' component={LoginScreen} />    
+    <Route path='/loginwithemail' component={Auth} />    
+    <Route path='/order/:id' component={OrderScreen} />    
+    <Route path='/placeorder' component={PlaceOrderScreen} />    
+    <Route path='/payment' component={PaymentScreen} />    
+    <Route path='/shipping' component={ShippingScreen} />    
+    <Route path='/profile' component={ProfileScreen} />    
+    <Route path='/register' component={RegisterScreen} />    
+    <Route path='/' component={HomeScreen} exact />
+    <Route path='/product/:id' component={ProductScreen} />
+    <Route path='/cart/:id?' component={CartScreen} />
+    </Container>
+    </main>
+>>>>>>> main
     <Footer />
     </>
     </Router>
   );
 }
 
+<<<<<<< HEAD
 // const ThemeImage = styled.img`
 //     max-width: 40px;
     
@@ -74,4 +107,6 @@ const Page = styled.div`
 //   font-size: 40px;
 // `;
 
+=======
+>>>>>>> main
 export default App;

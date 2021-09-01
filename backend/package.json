@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "server",
   "main": "server.js",
+<<<<<<< HEAD
+=======
+  "type": "module",
+>>>>>>> main
   "scripts": {
     "start": "node server"
   },
