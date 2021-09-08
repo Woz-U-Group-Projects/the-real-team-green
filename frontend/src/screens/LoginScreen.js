@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import FormWrap from '../components/FormWrap'
 import { login } from '../actions/userActions'
+// import GLogin from '../components/GLogin'
+// import GLogout from '../components/GLogout'
 
 
 
@@ -12,6 +14,10 @@ const LoginScreen = ({ location, history }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
+  
+  // const [toggle, setToggle] = useState(true);
+  // const handleToggle = () => setToggle(toggle => !toggle);
+  
   const dispatch = useDispatch()
 
   const userLogin = useSelector((state) => state.userLogin)
@@ -67,7 +73,6 @@ const LoginScreen = ({ location, history }) => {
           </Link>
         </Col>
       </Row>
-
       <Row className='py-3'>
         <Col>
           New Customer?{' '}
