@@ -15,6 +15,7 @@
     "magic-sdk": "^4.4.2",
     "mongoose": "^5.13.7",
     "nodemon": "^2.0.12",
+    "react-google-login": "^5.2.2",
     "react-paypal-button-v2": "^2.6.3",
     "react-redux": "^7.2.4",
     "redux-devtools-extension": "^2.13.9",

@@ -13,13 +13,26 @@ import ShippingScreen from './screens/ShippingScreen';
 import PaymentScreen from './screens/PaymentScreen';
 import OrderScreen from "./screens/OrderScreen";
 import PlaceOrderScreen from './screens/PlaceOrderScreen';
-import Auth from './components/Auth'
+import Auth from './components/Auth';
+import styled from 'styled-components';
+import { useState } from 'react';
+
+
 
 function App() {
+  const [isDarkMode, setDarkMode] = useState(false);
+
+  const handleToggle = () => {
+        setDarkMode(!isDarkMode);
+        console.log(isDarkMode)
+  }   
   return (
     <Router>
     <>
     <Header />
+    <Page light={isDarkMode ? true : false}>
+    <Button light={isDarkMode ? true : false}  onClick={handleToggle}>Dark Mode</Button>
+            {/* <ThemeImage src={ isDarkMode ? `${Moon}` : `${Sun}` }/> */}
     <main className='py-3'>
       <Container>
     <Route path='/login' component={LoginScreen} />    
@@ -35,10 +48,37 @@ function App() {
     <Route path='/cart/:id?' component={CartScreen} />
     </Container>
     </main>
+    </Page>
     <Footer />
     </>
     </Router>
   );
 }
+
+const Button = styled.button`
+  margin: 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: .2s all ease-in-out;
+  background: none;
+  color: ${props => !props.light ? "#333" : "#eee"};
+  
+  &:hover {
+    transition: .2s all ease-in-out;
+  opacity: 1;
+  radius: 25%;
+  
+  }
+`;
+
+const Page = styled.div`
+  position: relative;
+  min-height: 100vh;
+  width: 100vw;
+  display: grid;
+  place-items: center;
+  transition: .5s;
+  background: ${props => props.light ? "#333" : "#eee"};
+`;
 
 export default App;
