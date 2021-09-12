@@ -2,24 +2,29 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Row, Col } from 'react-bootstrap'
 import Product from '../components/Product'
+import Paginate from '../components/Paginate'
 import { listProducts } from '../actions/productActions.js'
 
-const HomeScreen = () => {
+
+const HomeScreen = ({ match }) => {
+    const keyword = match.params.keyword
+    const pageNumber = match.params.pageNumber || 1
     const dispatch = useDispatch()
 
     const productList = useSelector(state => state.productList)
-    const { error, products } = productList
+    const { error, products, page, pages } = productList
 
     useEffect(() => {
-        dispatch(listProducts())
-    }, [dispatch])
+        dispatch(listProducts(keyword, pageNumber))
+    }, [dispatch, keyword, pageNumber])
 
     return (
         <>
-            <h1>Latest Products</h1>
+            <h1>Products</h1>
             {error ? (
                 <h3>{error}</h3>
             ) : (
+                <>
                 <Row>
                     {products &&
                         products.map((product => (
@@ -27,11 +32,11 @@ const HomeScreen = () => {
                                 <h3>{product.name}</h3>
                                 <Product product={product} />
                             </Col>
-
-                        )))
-
-                    }
-                </Row>)}
+                        )))}
+                <Paginate pages={pages} page={page} keyword={keyword ? keyword : ''}/>
+                </Row>
+                </>
+                )}
 
         </>
     )
