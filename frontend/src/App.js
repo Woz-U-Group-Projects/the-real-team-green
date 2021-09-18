@@ -77,17 +77,19 @@ function App() {
 }
 
 const Button = styled.button`
-  margin: 1rem;
+  margin: -2rem;
+  margin-right: 2rem;
   font-size: .8rem;
   cursor: pointer;
   transition: .2s all ease-in-out;
   background-color: ${props => !props.light ? "#000000" : "#eee"};
-  color: ${props => !props.light ? "#F8F0F0" : "#000000"};
+  color: ${props => !props.light ? "#FFFFFF" : "#000000"};
   opacity: .7;
   font: bolder;
   border-radius: 50%;
   font-weight: 600;
   font-family: Gill Sans, sans-serif;
+  float: right;
 
   &:hover {
     transition: .2s all ease-in-out;
@@ -108,10 +110,11 @@ const Page = styled.div`
 
 const Wrap = styled.div`
 position: relative;
-min-height: 10vh;
+min-height: 0vh;
 width: 100vw;
 transition: .5s;
 background-color: ${props => props.light ? "#000000" : "#8DCFEE"};
+
 
 `;
 export default App;
