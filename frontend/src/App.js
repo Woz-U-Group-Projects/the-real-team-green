@@ -16,6 +16,7 @@ import PlaceOrderScreen from './screens/PlaceOrderScreen';
 import Auth from './components/Auth';
 import styled from 'styled-components';
 import { useState } from 'react';
+import FormWrap from './components/FormWrap';
 
 
 
@@ -25,14 +26,20 @@ function App() {
   const handleToggle = () => {
         setDarkMode(!isDarkMode);
         console.log(isDarkMode)
-  }   
+  }
+  let title=isDarkMode ? "Lighten": "Darken";
+
   return (
     <Router>
     <>
     <Header />
+    <Wrap>
+    <Button light={isDarkMode ? true : false}  onClick={handleToggle}>{title}</Button>
+    </Wrap>
+
     <Page light={isDarkMode ? true : false}>
-    <Button light={isDarkMode ? true : false}  onClick={handleToggle}>Dark Mode</Button>
-            {/* <ThemeImage src={ isDarkMode ? `${Moon}` : `${Sun}` }/> */}
+    
+    
     <main className='py-3'>
       <Container>
     <Route path='/login' component={LoginScreen} />    
@@ -57,16 +64,20 @@ function App() {
 
 const Button = styled.button`
   margin: 1rem;
-  font-size: 1rem;
+  font-size: .8rem;
   cursor: pointer;
   transition: .2s all ease-in-out;
-  background: none;
-  color: ${props => !props.light ? "#333" : "#eee"};
-  
+  background-color: ${props => !props.light ? "#000000" : "#eee"};
+  color: ${props => !props.light ? "#F8F0F0" : "#000000"};
+  opacity: .7;
+  font: bolder;
+  border-radius: 50%;
+  font-weight: 600;
+  font-family: Gill Sans, sans-serif;
+
   &:hover {
     transition: .2s all ease-in-out;
-  opacity: 1;
-  radius: 25%;
+  
   
   }
 `;
@@ -76,9 +87,17 @@ const Page = styled.div`
   min-height: 100vh;
   width: 100vw;
   display: grid;
-  place-items: center;
+  position: center;
   transition: .5s;
-  background: ${props => props.light ? "#333" : "#eee"};
+  background-color: ${props => props.light ? "#000000" : "#8DCFEE"};
 `;
 
+const Wrap = styled.div`
+position: relative;
+min-height: 10vh;
+width: 100vw;
+transition: .5s;
+background-color: ${props => props.light ? "#000000" : "#8DCFEE"};
+
+`;
 export default App;
