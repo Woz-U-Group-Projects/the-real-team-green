@@ -16,9 +16,9 @@ import {
   ORDER_LIST_FAIL,
   ORDER_LIST_SUCCESS,
   ORDER_LIST_REQUEST,
-  ORDER_DELIVER_FAIL,
-  ORDER_DELIVER_SUCCESS,
-  ORDER_DELIVER_REQUEST,
+  ORDER_SHIPPED_FAIL,
+  ORDER_SHIPPED_SUCCESS,
+  ORDER_SHIPPED_REQUEST,
 } from '../constants/orderConstants'
 import { logout } from './userActions'
 
@@ -147,10 +147,10 @@ export const payOrder = (orderId, paymentResult) => async (
   }
 }
 
-export const deliverOrder = (order) => async (dispatch, getState) => {
+export const shippedOrder = (order) => async (dispatch, getState) => {
   try {
     dispatch({
-      type: ORDER_DELIVER_REQUEST,
+      type: ORDER_SHIPPED_REQUEST,
     })
 
     const {
@@ -164,13 +164,13 @@ export const deliverOrder = (order) => async (dispatch, getState) => {
     }
 
     const { data } = await axios.put(
-      `/api/orders/${order._id}/deliver`,
+      `/api/orders/${order._id}/shipped`,
       {},
       config
     )
 
     dispatch({
-      type: ORDER_DELIVER_SUCCESS,
+      type: ORDER_SHIPPED_SUCCESS,
       payload: data,
     })
   } catch (error) {
@@ -182,7 +182,7 @@ export const deliverOrder = (order) => async (dispatch, getState) => {
       dispatch(logout())
     }
     dispatch({
-      type: ORDER_DELIVER_FAIL,
+      type: ORDER_SHIPPED_FAIL,
       payload: message,
     })
   }
