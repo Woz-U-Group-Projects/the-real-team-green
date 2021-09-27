@@ -5,7 +5,6 @@ import Product from '../components/Product'
 import Paginate from '../components/Paginate'
 import { listProducts } from '../actions/productActions.js'
 
-
 const HomeScreen = ({ match }) => {
     const keyword = match.params.keyword
     const pageNumber = match.params.pageNumber || 1
@@ -18,6 +17,9 @@ const HomeScreen = ({ match }) => {
         dispatch(listProducts(keyword, pageNumber))
     }, [dispatch, keyword, pageNumber])
 
+    const isDarkMode = (localStorage.getItem("isDarkMode") === 'true');
+    const myStyle = isDarkMode ? {color: 'white'} : {color: 'black'}
+
     return (
         <>
             <h1>Products</h1>
@@ -29,7 +31,7 @@ const HomeScreen = ({ match }) => {
                     {products &&
                         products.map((product => (
                             <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
-                                <h3>{product.name}</h3>
+                                <h3 style={myStyle}>{product.name}</h3>
                                 <Product product={product} />
                             </Col>
                         )))}

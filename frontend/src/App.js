@@ -21,7 +21,7 @@ import OrderListScreen from './screens/OrderListScreen';
 import Auth from './components/Auth';
 import styled from 'styled-components';
 import { useState } from 'react';
-import FormWrap from './components/FormWrap';
+
 
 
 
@@ -30,8 +30,12 @@ function App() {
 
   const handleToggle = () => {
         setDarkMode(!isDarkMode);
-        console.log(isDarkMode)
+        localStorage.setItem('isDarkMode', isDarkMode);
+        //console.log(isDarkMode)
   }
+
+  const isDarkModeLS = (localStorage.getItem("isDarkMode") === 'true');
+
   let title=isDarkMode ? "Lighten": "Darken";
 
   return (
@@ -42,7 +46,7 @@ function App() {
     <Button light={isDarkMode ? true : false}  onClick={handleToggle}>{title}</Button>
     </Wrap>
 
-    <Page light={isDarkMode ? true : false}>
+    <Page light={isDarkModeLS ? true : false}>
     
     
     <main className='py-3'>
@@ -105,7 +109,7 @@ const Page = styled.div`
   display: grid;
   position: center;
   transition: .5s;
-  background-color: ${props => props.light ? "#000000" : "#8DCFEE"};
+  background-color: ${props => props.light ? "#000000" : "#7b8ab8"};
 `;
 
 const Wrap = styled.div`
@@ -113,7 +117,7 @@ position: relative;
 min-height: 0vh;
 width: 100vw;
 transition: .5s;
-background-color: ${props => props.light ? "#000000" : "#8DCFEE"};
+background-color: ${props => props.light ? "#000000" : "#7b8ab8"};
 
 
 `;
